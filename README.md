@@ -43,7 +43,7 @@ export default {
     this.getList();
   },
   methods:{},
-  asyncMethods(){
+  asyncMethods:{
     async getList(){
       await timeout(3000)
     }
