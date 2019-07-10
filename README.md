@@ -1,6 +1,6 @@
 # vue-loading-plugin
 ---
-1. 本插件用于vue2.x,自定义了一个钩子，用来放置异步函数可以获取各种接口请求，异步函数的loading状态，配合其他更具状态显示loading的组件（例如elementui的v-loading指令）效果显著
+1. 本插件用于vue2.x,自定义了一个钩子(asyncMethods)(会自动合并进methods钩子)，用来放置异步函数可以获取各种接口请求，异步函数的loading状态，配合其他更具状态显示loading的组件（例如elementui的v-loading指令）效果显著
 2. [项目源码(source code)](https://github.com/Fuphoenixes/vue-loading-plugin)
 
 
