@@ -4,14 +4,24 @@ export default {
       loadingPlugin: {}
     }
   },
-  beforeCreate(){
-    if(!this.$vnode)return;
-    const methods = this.$vnode.componentOptions.Ctor.extendOptions.methods;
-    const asyncMethods = this.$vnode.componentOptions.Ctor.extendOptions.asyncMethods;
-    if(asyncMethods){
-      Object.assign(methods,createLoading(asyncMethods))
-    }
-  },
+	beforeCreate(){
+		if(!this.$vnode)return;
+		const extendOptions = this.$vnode.componentOptions.Ctor.extendOptions;
+		const asyncMethods = extendOptions.asyncMethods;
+		const methods = extendOptions.methods;
+		if(asyncMethods){
+			if(methods){
+				Object.assign(extendOptions.methods,createLoading(asyncMethods))
+			}else{
+				const methods = createLoading(asyncMethods);
+				for(let key in methods){
+					if(methods.hasOwnProperty(key)){
+						this[key] = methods[key];
+					}
+				}
+			}
+		}
+	},
 }
 
 export function createLoading(obj) {
