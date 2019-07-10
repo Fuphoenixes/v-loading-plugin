@@ -1,7 +1,7 @@
 {
-  "name": "vue-loading-plugin",
+  "name": "loading-plugin",
   "version": "1.0.0",
-  "description": "vue loading plugin,自动获取异步函数的状态用于显示loading",
+  "description": "vue loading plugin,基于vue的自动获取异步函数的状态用于显示loading",
   "homepage":"https://github.com/Fuphoenixes/vue-loading-plugin",
   "main": "dist/bundle.js",
   "files": [
@@ -12,6 +12,7 @@
     "build": "webpack"
   },
   "keywords": [
+    "loading-plugin",
     "vue-loading-plugin",
     "vue",
     "loading",
