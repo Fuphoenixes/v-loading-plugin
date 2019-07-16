@@ -8,20 +8,21 @@ export default {
 		if(!this.$vnode)return;
 		const extendOptions = this.$vnode.componentOptions.Ctor.extendOptions;
 		const asyncMethods = extendOptions.asyncMethods;
-		const methods = extendOptions.methods;
 		if(asyncMethods){
-			if(methods){
+			if(extendOptions.methods){
 				Object.assign(extendOptions.methods,createLoading(asyncMethods))
-			}else{
-				const methods = createLoading(asyncMethods);
-				for(let key in methods){
-					if(methods.hasOwnProperty(key)){
-						this[key] = methods[key];
-					}
-				}
 			}
+      const methods = createLoading(asyncMethods);
+      for(let key in methods){
+        if(methods.hasOwnProperty(key)){
+          this[key] = methods[key];
+        }
+      }
 		}
-	},
+  },
+  created(){
+    this.$loadingPlugin = this.loadingPlugin;
+  }
 }
 
 export function createLoading(obj) {

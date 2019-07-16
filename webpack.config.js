@@ -20,10 +20,10 @@ module.exports = {
   },
 	plugins:[
 		new UglifyJsPlugin({
-			compress: {
-				warnings: false
-			}
-		})
+      uglifyOptions: {
+          compress: false
+      }
+    })
   ],
   externals: [nodeExternals()]
 };

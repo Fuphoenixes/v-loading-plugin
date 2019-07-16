@@ -28,7 +28,7 @@ Vue.use(loadingPlugin)
 demo.vue
 ```
 <template>
-  <div>{{loadingPlugin.getList}}</div> 
+  <div>{{$loadingPlugin.getList}}</div> 
   <div>
       这里会显示getList函数的异步状态,进行中显示true,进行结束则显示false，
       可配合类似elementui的v-loading或者其他通过true/false显示loading状态的组件使用，
