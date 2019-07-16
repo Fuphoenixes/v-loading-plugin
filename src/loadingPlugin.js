@@ -20,9 +20,16 @@ export default {
       }
 		}
   },
-  created(){
-    this.$loadingPlugin = this.loadingPlugin;
-  }
+  watch:{
+    loadingPlugin:{
+      handler(val){
+        this.$loadingPlugin = val;
+        this.$forceUpdate()
+      },
+      immediate:true,
+      deep:true
+    }
+  },
 }
 
 export function createLoading(obj) {
