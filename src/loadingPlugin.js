@@ -1,50 +1,48 @@
-export default {
-  data(){
-    return {
-      loadingPlugin: {}
-    }
-  },
-	beforeCreate(){
-		if(!this.$vnode)return;
-		const extendOptions = this.$vnode.componentOptions.Ctor.extendOptions;
-		const asyncMethods = extendOptions.asyncMethods;
-		if(asyncMethods){
-			if(extendOptions.methods){
-				Object.assign(extendOptions.methods,createLoading(asyncMethods))
-			}
-      const methods = createLoading(asyncMethods);
-      for(let key in methods){
-        if(methods.hasOwnProperty(key)){
-          this[key] = methods[key];
-        }
+export default ({ namespace = '$loadingPlugin'})=> {
+  return {
+    data(){
+      return {
+        loadingPlugin__: {}
       }
-		}
-  },
-  watch:{
-    loadingPlugin:{
-      handler(val){
-        this.$loadingPlugin = val;
-        this.$forceUpdate()
-      },
-      immediate:true,
-      deep:true
-    }
-  },
+    },
+    beforeCreate(){
+      if(!this.$vnode)return;
+      const extendOptions = this.$vnode.componentOptions.Ctor.extendOptions;
+      if(extendOptions.methods){
+        Object.assign(extendOptions.methods,createLoading(extendOptions.methods))
+      }
+    },
+    watch:{
+      loadingPlugin__:{
+        handler(val){
+          this[namespace] = val;
+          this.$forceUpdate()
+        },
+        immediate:true,
+        deep:true
+      }
+    },
+  }
 }
 
 export function createLoading(obj) {
   const newObj = {};
   for (const k in obj){
-    newObj[k] =  function(...args){
-      return new Promise((resolve, reject) => {
-        this.$set(this.loadingPlugin,k,true);
-        obj[k].apply(this,args)
-          .then(resolve)
+    newObj[k] = function(...args){
+      const rtn = obj[k].apply(this,args);
+      //监听异步函数
+      if(rtn.then){
+        return new Promise((resolve, reject) => {
+          this.$set(this.loadingPlugin__,k,true);
+          rtn.then(resolve)
           .catch(reject)
           .finally(() => {
-            this.$set(this.loadingPlugin,k,false);
-          })
+            this.$set(this.loadingPlugin__,k,false);
+          })  
       })
+      }else{
+        return rtn
+      }
     }
   }
   return newObj

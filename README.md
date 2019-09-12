@@ -1,6 +1,6 @@
 ﻿# loading-plugin
 ---
-1. 本插件用于vue2.x,自定义了一个钩子(asyncMethods)(会自动合并进methods钩子)，用来放置异步函数，可以获取各种接口请求、异步函数的loading状态，配合其他根据状态显示loading的组件（例如elementui的v-loading指令）效果显著
+1. 适用于vue2.x,自动监听异步函数的进行状态，可用来根据其状态显示loading，效果显著
 2. [项目源码(source code)](https://github.com/Fuphoenixes/loading-plugin)
 3. 觉得好用给个star，谢啦！
 
@@ -23,15 +23,19 @@ main.js
 import loadingPlugin from 'loading-plugin';
 
 Vue.use(loadingPlugin)
+//或
+Vue,use(loadingPlugin,{
+  namespace:'$loadingPlugin'
+})
 
 ```
 demo.vue
 ```
 <template>
-  <div>{{$loadingPlugin.getList}}</div> 
+  <div v-if="$loadingPlugin.getList">loading ...</div> 
   <div>
-      这里会显示getList函数的异步状态,进行中显示true,进行结束则显示false，
-      可配合类似elementui的v-loading或者其他通过true/false显示loading状态的组件使用，
+      这里会根据getList函数的异步状态显示loading,
+      也可配合类似elementui的v-loading或者其他通过true/false显示loading状态的组件使用，
       可以省去手动根据异步函数的状态设置this.loading=true或者false
   </div>   
 </template>
@@ -43,12 +47,11 @@ export default {
   created(){
     this.getList();
   },
-  methods:{},
-  asyncMethods:{
+  methods:{
     async getList(){
       await timeout(3000)
     }
-  }
+  },
 }
 
 function timeout (delay){
