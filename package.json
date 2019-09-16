@@ -1,8 +1,8 @@
 {
-  "name": "loading-plugin",
-  "version": "2.0.0",
-  "description": "vue loading plugin,基于vue的自动获取异步函数的状态用于显示loading",
-  "homepage": "https://github.com/Fuphoenixes/loading-plugin",
+  "name": "v-loading-plugin",
+  "version": "1.0.0",
+  "description": "基于vue的自动获取异步函数的状态用于显示loading,Automatic acquisition of asynchronous function status based on Vue for display loading",
+  "homepage": "https://github.com/Fuphoenixes/v-loading-plugin",
   "main": "dist/bundle.js",
   "files": [
     "dist"
@@ -14,7 +14,8 @@
     "vue",
     "loading",
     "vue-loading",
-    "async"
+    "async",
+    "loading-plugin"
   ],
   "author": "sanpiao",
   "license": "ISC",

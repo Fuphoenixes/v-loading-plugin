@@ -31,7 +31,7 @@ export function createLoading(obj) {
     newObj[k] = function(...args){
       const rtn = obj[k].apply(this,args);
       //监听异步函数
-      if(rtn.then){
+      if(rtn instanceof Promise){
         return new Promise((resolve, reject) => {
           this.$set(this.loadingPlugin__,k,true);
           rtn.then(resolve)
