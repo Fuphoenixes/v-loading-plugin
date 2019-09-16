@@ -15,7 +15,8 @@
     "loading",
     "vue-loading",
     "async",
-    "loading-plugin"
+    "loading-plugin",
+    "vue-loading-plugin"
   ],
   "author": "sanpiao",
   "license": "ISC",
