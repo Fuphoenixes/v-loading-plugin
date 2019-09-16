@@ -6,9 +6,9 @@ export default ({ namespace = '$loadingPlugin'})=> {
       }
     },
     beforeCreate(){
-      let methods = this.constructor.options.methods;
+      let methods = this.$options.methods;
       if(methods){
-        this.constructor.options.methods = createLoading(methods);
+        this.$options.methods = createLoading(methods);
       }
     },
     watch:{
