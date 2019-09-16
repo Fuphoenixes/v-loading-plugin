@@ -5,16 +5,10 @@ export default ({ namespace = '$loadingPlugin'})=> {
         loadingPlugin__: {}
       }
     },
-    created(){
-      if(!this.$vnode)return;
-      const extendOptions = this.$vnode.componentOptions.Ctor.extendOptions;
-      if(extendOptions.methods){
-        const methods = extendOptions.methods = createLoading(extendOptions.methods);
-        for(let key in methods){
-          if(methods.hasOwnProperty(key)){
-            this[key] = methods[key];
-          }
-        }
+    beforeCreate(){
+      let methods = this.constructor.options.methods;
+      if(methods){
+        this.constructor.options.methods = createLoading(methods);
       }
     },
     watch:{
