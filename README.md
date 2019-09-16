@@ -1,7 +1,7 @@
 ## v-loading-plugin
 ---
 
-English | [简体中文](./README.zh-CN.md)
+English | [简体中文](https://github.com/Fuphoenixes/v-loading-plugin/blob/master/README.zh-CN.md)
 
 1. It is suitable for vue2.x. It can automatically monitor the state of asynchronous function and display loading according to its state. The effect is remarkable.
 2. [source code](https://github.com/Fuphoenixes/v-loading-plugin)

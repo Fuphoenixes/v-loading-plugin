@@ -1,6 +1,6 @@
 {
   "name": "v-loading-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "基于vue的自动获取异步函数的状态用于显示loading,Automatic acquisition of asynchronous function status based on Vue for display loading",
   "homepage": "https://github.com/Fuphoenixes/v-loading-plugin",
   "main": "dist/bundle.js",
