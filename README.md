@@ -5,7 +5,7 @@ English | [简体中文](https://github.com/Fuphoenixes/v-loading-plugin/blob/ma
 
 1. It is suitable for vue2.x. It can automatically monitor the state of asynchronous function and display loading according to its state. The effect is remarkable.
 2. [source code](https://github.com/Fuphoenixes/v-loading-plugin)
-3. If it feels good, give it a star, thank you.
+3. If you think it's good, please give a star.
 
 
 ## Install
