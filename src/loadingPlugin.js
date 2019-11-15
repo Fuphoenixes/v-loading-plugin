@@ -27,7 +27,7 @@ export default ({ namespace = '$loadingPlugin'})=> {
 export function createLoading(obj) {
   const newObj = {};
   for (const k in obj){
-    if(obj.hasOwnProperty(k)){
+    if(Object.hasOwnProperty.call(obj, k)){
       newObj[k] = function(...args){
         const rtn = obj[k].apply(this,args);
         //监听异步函数
