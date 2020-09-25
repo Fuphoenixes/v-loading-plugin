@@ -43,6 +43,8 @@ demo.vue
   -->
 </template>
 <script>
+const timeout = delay => new Promise(resolve => setTimeout(resove,delay))
+
 export default {
   created(){
     this.getList();
@@ -54,12 +56,5 @@ export default {
   },
 }
 
-function timeout (delay){
-  return new Promise((resolve, reject)=>{
-      setTimeout(()=>{
-          resolve();
-      },delay)
-  })
-}
 </script>   
 ```
