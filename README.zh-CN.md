@@ -43,6 +43,7 @@ demo.vue
   -->
 </template>
 <script>
+// 模拟异步请求
 const timeout = delay => new Promise(resolve => setTimeout(resove,delay))
 
 export default {
