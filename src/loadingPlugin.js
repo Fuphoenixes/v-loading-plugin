@@ -10,17 +10,16 @@ export default ({ namespace = '$loadingPlugin'})=> {
       if(methods){
         this.$options.methods = createLoading(methods);
       }
-    },
-    watch:{
-      loadingPlugin__:{
-        handler(val){
-          this[namespace] = val;
-          this.$forceUpdate()
+      // 代理 namespace 至 loadingPlugin__
+      Object.defineProperty(this, namespace, {
+        get() {
+          return this.loadingPlugin__
         },
-        immediate:true,
-        deep:true
-      }
-    },
+        set(val) {
+          this.loadingPlugin__ = val
+        }
+      })
+    }
   }
 }
 
@@ -38,7 +37,7 @@ export function createLoading(obj) {
             .catch(reject)
             .finally(() => {
               this.$set(this.loadingPlugin__,k,false);
-            })  
+            })
           })
         }else{
           return rtn
